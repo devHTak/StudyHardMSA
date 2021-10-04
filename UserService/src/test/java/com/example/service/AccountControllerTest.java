@@ -5,7 +5,6 @@ import com.example.entity.PasswordEntity;
 import com.example.entity.SignUpEntity;
 import com.example.entity.UpdateEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.hibernate.sql.Update;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

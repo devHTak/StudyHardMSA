@@ -21,7 +21,7 @@ public class ZoneValidator implements Validator {
     public void validate(Object target, Errors errors) {
         Address address = (Address) target;
 
-        if(zoneRepository.existsByAddress(address)) {
+        if(zoneRepository.existsByAddressCityAndAddressLocalNameCityAndAddressProvince(address.getCity(), address.getLocalNameCity(), address.getProvince())) {
             errors.reject("address", "duplicated.address");
         }
     }

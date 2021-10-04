@@ -1,19 +1,21 @@
-package com.example.entity;
+package com.example.domain;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
-@Embeddable
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-@EqualsAndHashCode(of = {"city", "localNameCity", "province"})
 public class Address {
     @NotNull
     private String city;
+
     @NotNull
     private String localNameCity;
+
     @NotNull
     private String province;
 }

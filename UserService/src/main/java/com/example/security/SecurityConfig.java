@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private AuthenticationFilter getAuthenticationFilter() throws Exception{
-        return new AuthenticationFilter(authenticationManager(), accountService, environment);
+        return new AuthenticationFilter(authenticationManager(), accountService, environment, passwordEncoder);
     }
 
     @Override

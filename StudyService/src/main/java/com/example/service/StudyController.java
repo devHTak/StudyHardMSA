@@ -1,14 +1,14 @@
 package com.example.service;
 
-import com.example.domain.AccountEntity;
-import com.example.domain.Study;
-import com.example.domain.StudyEntity;
+import com.example.domain.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,7 +19,7 @@ public class StudyController {
     private final StudyService studyService;
 
     @PostMapping
-    public ResponseEntity<Study> saveStudy(@PathVariable String memberId, @Validated @RequestBody StudyEntity studyEntity, BindingResult result) {
+    public ResponseEntity<Study> saveStudy(@PathVariable String memberId, @Validated @RequestBody RequestStudy studyEntity, BindingResult result) {
         if(result.hasErrors()) {
             return ResponseEntity.badRequest().body(new Study());
         }
@@ -34,13 +34,13 @@ public class StudyController {
     }
 
     @GetMapping("/{studyId}/managers")
-    public ResponseEntity<List<AccountEntity>> findManagersByStudyId(@PathVariable String studyId) {
-        return ResponseEntity.ok(studyService.findManagersByStudyId(studyId));
+    public ResponseEntity<List<ResponseUser>> findManagersByStudyId(@PathVariable String studyId, @RequestHeader(HttpHeaders.AUTHORIZATION) String auth) {
+        return ResponseEntity.ok(studyService.findManagersByStudyId(studyId, auth));
     }
 
     @GetMapping("/{studyId}/members")
-    public ResponseEntity<List<AccountEntity>> findMembersByStudyId(@PathVariable String studyId) {
-        return ResponseEntity.ok(studyService.findMembersByStudyId(studyId));
+    public ResponseEntity<List<ResponseUser>> findMembersByStudyId(@PathVariable String studyId, @RequestHeader(HttpHeaders.AUTHORIZATION) String auth) {
+        return ResponseEntity.ok(studyService.findMembersByStudyId(studyId, auth));
     }
 
     @PostMapping("/{studyId}/join")
@@ -59,5 +59,45 @@ public class StudyController {
         } catch(IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(false);
         }
+    }
+
+    @PostMapping("/{studyId}/zones/add")
+    public ResponseEntity<Study> addZone(@Valid @RequestBody RequestZone requestZone, BindingResult result
+            , @PathVariable String studyId, @RequestHeader(HttpHeaders.AUTHORIZATION) String auth) {
+        if(result.hasErrors()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
+        return ResponseEntity.ok(studyService.addZone(studyId, requestZone, auth));
+    }
+
+    @PostMapping("/{studyId}/zones/remove")
+    public ResponseEntity<Study> removeZone(@Valid @RequestBody RequestZone requestZone, BindingResult result
+            , @PathVariable String studyId, @RequestHeader(HttpHeaders.AUTHORIZATION) String auth) {
+        if(result.hasErrors()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
+        return ResponseEntity.ok(studyService.removeZone(studyId, requestZone, auth));
+    }
+
+    @PostMapping("/{studyId}/tags/add")
+    public ResponseEntity<Study> addTag(@Valid @RequestBody RequestTag requestTag, BindingResult result,
+                                        @PathVariable String studyId, @RequestHeader(HttpHeaders.AUTHORIZATION) String auth) {
+        if(result.hasErrors()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
+        return ResponseEntity.ok(studyService.addTag(studyId, requestTag, auth));
+    }
+
+    @PostMapping("/{studyId}/tags/remove")
+    public ResponseEntity<Study> removeTag(@Valid @RequestBody RequestTag requestTag, BindingResult result,
+                                           @PathVariable String studyId, @RequestHeader(HttpHeaders.AUTHORIZATION) String auth) {
+        if(result.hasErrors()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
+        return ResponseEntity.ok(studyService.removeTag(studyId, requestTag, auth));
     }
 }

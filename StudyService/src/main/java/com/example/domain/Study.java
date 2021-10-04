@@ -1,6 +1,7 @@
 package com.example.domain;
 
 import lombok.*;
+import net.bytebuddy.dynamic.scaffold.MethodGraph;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -49,6 +50,12 @@ public class Study {
     @OneToMany(mappedBy = "study")
     private List<StudyManager> managers = new LinkedList<>();
 
+    @OneToMany(mappedBy = "study")
+    private List<StudyTag> tags = new LinkedList<>();
+
+    @OneToMany(mappedBy = "study")
+    private List<StudyZone> zones = new LinkedList<>();
+
     public void addMember(StudyMember member) {
         if(!members.contains(member)) {
             members.add(member);
@@ -77,4 +84,31 @@ public class Study {
         }
     }
 
+    public void addTag(StudyTag tag) {
+        if(!tags.contains(tag)) {
+            tags.add(tag);
+            tag.setStudy(this);
+        }
+    }
+
+    public void removeTag(StudyTag tag) {
+        if(tags.contains(tag)) {
+            tags.remove(tag);
+            tag.setStudy(null);
+        }
+    }
+
+    public void addZone(StudyZone zone) {
+        if(!zones.contains(zone)) {
+            zones.add(zone);
+            zone.setStudy(this);
+        }
+    }
+
+    public void removeZone(StudyZone zone) {
+        if(zones.contains(zone)) {
+            zones.remove(zone);
+            zone.setStudy(null);
+        }
+    }
 }

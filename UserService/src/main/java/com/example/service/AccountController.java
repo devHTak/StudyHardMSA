@@ -1,16 +1,16 @@
 package com.example.service;
 
-import com.example.entity.Account;
-import com.example.entity.PasswordEntity;
-import com.example.entity.SignUpEntity;
-import com.example.entity.UpdateEntity;
+import com.example.entity.*;
 import com.example.entity.validate.SignUpValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import javax.ws.rs.Path;
 
 @RestController
 @RequiredArgsConstructor
@@ -43,6 +43,47 @@ public class AccountController {
     @GetMapping("/profiles/{nickname}")
     public ResponseEntity<Account> findProfilesByNickname(@PathVariable String nickname) {
         return ResponseEntity.ok(accountService.findAccountByNickname(nickname));
+    }
+
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<Account> findUserByUserId(@PathVariable String userId) {
+        return ResponseEntity.ok(accountService.findAccountByUserId(userId));
+    }
+
+    @PostMapping("/users/{userId}/tag/add")
+    public ResponseEntity<Account> saveTag(@Validated @RequestBody RequestTag tag, BindingResult result,
+                                           @PathVariable String userId, @RequestHeader(HttpHeaders.AUTHORIZATION) String auth) {
+        if(result.hasErrors()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        return ResponseEntity.ok(accountService.saveTag(tag, userId, auth));
+    }
+
+    @PostMapping("/users/{userId}/tag/remove")
+    public ResponseEntity<Account> removeTag(@Validated @RequestBody RequestTag tag, BindingResult result,
+                                             @PathVariable String userId, @RequestHeader(HttpHeaders.AUTHORIZATION) String auth) {
+        if(result.hasErrors()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        return ResponseEntity.ok(accountService.removeTag(tag, userId, auth));
+    }
+
+    @PostMapping("/users/{userId}/zone/add")
+    public ResponseEntity<Account> saveZone(@Validated @RequestBody RequestZone zone, BindingResult result,
+                                            @PathVariable String userId, @RequestHeader(HttpHeaders.AUTHORIZATION) String auth) {
+        if(result.hasErrors()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        return ResponseEntity.ok(accountService.saveZone(zone, userId, auth));
+    }
+
+    @PostMapping("/users/{userId}/zone/remove")
+    public ResponseEntity<Account> removeZone(@Validated @RequestBody RequestZone zone, BindingResult result,
+                                              @PathVariable String userId, @RequestHeader(HttpHeaders.AUTHORIZATION) String auth) {
+        if(result.hasErrors()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        return ResponseEntity.ok(accountService.removeZone(zone, userId, auth));
     }
 
     @PutMapping("/profiles/{nickname}")

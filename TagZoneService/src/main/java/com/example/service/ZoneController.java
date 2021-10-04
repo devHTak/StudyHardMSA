@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.*;
 public class ZoneController {
 
     private final ZoneService zoneService;
-    private final ZoneValidator zoneValiator;
+    private final ZoneValidator zoneValidator;
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-        binder.addValidators(zoneValiator);
+        binder.addValidators(zoneValidator);
     }
 
     @PostMapping
@@ -34,10 +34,17 @@ public class ZoneController {
     }
 
     @GetMapping
-    public ResponseEntity<Boolean> existsZoneByAddress(@Validated @ModelAttribute Address address, BindingResult result) {
-        if(result.hasErrors()) {
-            return ResponseEntity.badRequest().body(false);
-        }
+    public ResponseEntity<Boolean> existsZone(@ModelAttribute Address address) {
         return ResponseEntity.ok(zoneService.existsByAddress(address));
+    }
+
+    @GetMapping("/find")
+    public ResponseEntity<Zone> findZone(@ModelAttribute Address address) {
+        return ResponseEntity.ok(zoneService.findByAddress(address));
+    }
+
+    @DeleteMapping("/{zoneId}")
+    public ResponseEntity<Boolean> deleteZoneById(@PathVariable Long zoneId) {
+        return ResponseEntity.ok(zoneService.deleteZoneById(zoneId));
     }
 }

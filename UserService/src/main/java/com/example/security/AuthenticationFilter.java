@@ -1,10 +1,14 @@
 package com.example.security;
 
+import com.example.entity.PasswordEntity;
 import com.example.entity.RequestLogin;
 import com.example.entity.Account;
 import com.example.service.AccountService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,6 +16,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -28,12 +33,14 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AccountService accountService;
     private final Environment environment;
+    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public AuthenticationFilter(AuthenticationManager authenticationManager, AccountService accountService, Environment environment) {
+    public AuthenticationFilter(AuthenticationManager authenticationManager, AccountService accountService,
+                                Environment environment, PasswordEncoder passwordEncoder) {
         super(authenticationManager);
         this.accountService = accountService;
         this.environment = environment;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override

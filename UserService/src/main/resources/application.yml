@@ -21,18 +21,21 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
     show-sql: true
 
 logging:
   level:
-    com.UserService: DEBUG
+    com.example.client: DEBUG
 
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http:h//localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka
 
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

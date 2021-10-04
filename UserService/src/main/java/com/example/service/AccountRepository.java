@@ -2,6 +2,8 @@ package com.example.service;
 
 import com.example.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
@@ -15,4 +17,10 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     Optional<Account> findByEmail(String email);
 
     Optional<Account> findByUserId(String userId);
+
+    @Query("select a from Account a left join fetch a.tags where a.userId = :userId")
+    Account findByUserIdWithTags(@Param("userId") String userId);
+
+    @Query("select a from Account a left join fetch a.zones where a.userId = :userId")
+    Account findByUserIdWithZones(@Param("userId") String userId);
 }

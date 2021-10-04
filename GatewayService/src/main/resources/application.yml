@@ -60,9 +60,15 @@ spring:
           filters:
             - AuthorizationHeaderFilter
         - id: event-service
-          uri: lb://EVENT_SERVICE
+          uri: lb://EVENT-SERVICE
           predicates:
             - Path= /event-service/**
+          filters:
+            - AuthorizationHeaderFilter
+        - id: tag-zone-service
+          uri: lb://TAG-ZONE-SERVICE
+          predicates:
+            - Path= /tag-zone-service/**
           filters:
             - AuthorizationHeaderFilter
 

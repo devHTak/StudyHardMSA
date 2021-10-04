@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 @Getter @Setter
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor @AllArgsConstructor
-public class StudyEntity {
+public class RequestStudy {
 
     @NotNull
     private String title;

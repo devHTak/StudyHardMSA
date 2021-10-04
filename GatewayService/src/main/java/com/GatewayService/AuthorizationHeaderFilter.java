@@ -37,6 +37,7 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
 
             String authorizationHeader = request.getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
             String jwt = authorizationHeader.replace("Bearer", "").trim();
+            log.info("Method: {}, Path: {}", request.getMethodValue(), request.getPath());
             log.info("Authorization Header:{}", authorizationHeader);
             log.info("JWT: {}", jwt);
             if(!isJwtValidated(jwt)) {

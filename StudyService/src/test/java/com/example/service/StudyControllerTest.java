@@ -1,7 +1,7 @@
 package com.example.service;
 
 import com.example.domain.Study;
-import com.example.domain.StudyEntity;
+import com.example.domain.RequestStudy;
 import com.example.domain.StudyManager;
 import com.example.domain.StudyMember;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -79,7 +79,7 @@ public class StudyControllerTest {
     @Test
     @DisplayName("스터디 생성-success")
     void saveStudyFormSuccess() throws Exception {
-        StudyEntity studyEntity = new StudyEntity();
+        RequestStudy studyEntity = new RequestStudy();
         studyEntity.setImage("TEST21");
         studyEntity.setPath("TEST22");
         studyEntity.setTitle("TEST23");
@@ -100,7 +100,7 @@ public class StudyControllerTest {
     @Test
     @DisplayName("스터디 생성-fail")
     void saveStudyFormFail() throws Exception {
-        StudyEntity studyEntity = new StudyEntity();
+        RequestStudy studyEntity = new RequestStudy();
         studyEntity.setImage("TEST21");
         studyEntity.setPath("TEST22");
         studyEntity.setTitle(null);

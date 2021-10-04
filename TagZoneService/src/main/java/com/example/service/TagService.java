@@ -23,4 +23,17 @@ public class TagService {
     public boolean existTag(String tagName) {
         return tagRepository.existsByName(tagName);
     }
+
+    public Tag findByName(String name) {
+        return tagRepository.findByName(name)
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
+    public boolean deleteByName(String name) {
+        Tag tag = tagRepository.findByName(name)
+                .orElseThrow(IllegalArgumentException::new);
+        tagRepository.delete(tag);
+
+        return true;
+    }
 }

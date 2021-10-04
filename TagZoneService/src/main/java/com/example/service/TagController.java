@@ -38,4 +38,14 @@ public class TagController {
     public ResponseEntity<Boolean> existTagByName(@PathVariable String name) {
         return ResponseEntity.ok(tagService.existTag(name));
     }
+
+    @GetMapping("/{name}/find")
+    public ResponseEntity<Tag> findTagByName(@PathVariable String name) {
+        return ResponseEntity.ok(tagService.findByName(name));
+    }
+
+    @DeleteMapping("/{name}/delete")
+    public ResponseEntity<Boolean> deleteTagByName(@PathVariable String name) {
+        return ResponseEntity.ok(tagService.deleteByName(name));
+    }
 }
