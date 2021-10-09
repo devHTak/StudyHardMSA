@@ -1,5 +1,5 @@
 # StudyHardMSA
-- StudyHardMSA project is developed by MSA on StudyHard()
+- 백기선님 강의를 통해 생성한 StudyHard 를 기반으로 진행한 MSA Project.
 
 #### Service Desc.
 
