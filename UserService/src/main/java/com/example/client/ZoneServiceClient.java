@@ -1,7 +1,7 @@
 package com.example.client;
 
-import com.example.entity.Address;
-import com.example.entity.ResponseZone;
+import com.example.entity.zone_tag.Address;
+import com.example.entity.zone_tag.ResponseZone;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;

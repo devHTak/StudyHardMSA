@@ -1,7 +1,7 @@
 package com.example.client;
 
-import com.example.entity.RequestTag;
-import com.example.entity.ResponseTag;
+import com.example.entity.zone_tag.RequestTag;
+import com.example.entity.zone_tag.ResponseTag;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;

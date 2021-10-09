@@ -1,6 +1,6 @@
 package com.example.entity.validate;
 
-import com.example.entity.SignUpEntity;
+import com.example.entity.account.SignUpEntity;
 import com.example.service.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

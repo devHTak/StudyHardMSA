@@ -28,7 +28,7 @@ eureka:
       defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
 
 server:
-  port: 8180
+  port: 0
 
 logging:
   level:
@@ -39,3 +39,7 @@ logging:
           descriptor:
             sql:
               BaiscBinder: TRACE
+
+kafka:
+  topic:
+    notification: study-notification-topic

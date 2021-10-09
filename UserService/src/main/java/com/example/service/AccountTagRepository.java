@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.entity.AccountTag;
+import com.example.entity.account.AccountTag;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

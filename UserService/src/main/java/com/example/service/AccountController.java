@@ -1,7 +1,12 @@
 package com.example.service;
 
-import com.example.entity.*;
+import com.example.entity.account.Account;
+import com.example.entity.account.PasswordEntity;
+import com.example.entity.account.SignUpEntity;
+import com.example.entity.account.UpdateEntity;
 import com.example.entity.validate.SignUpValidator;
+import com.example.entity.zone_tag.RequestTag;
+import com.example.entity.zone_tag.RequestZone;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +14,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-
-import javax.ws.rs.Path;
 
 @RestController
 @RequiredArgsConstructor

@@ -1,15 +1,10 @@
 package com.example.security;
 
-import com.example.entity.PasswordEntity;
-import com.example.entity.RequestLogin;
-import com.example.entity.Account;
+import com.example.entity.account.RequestLogin;
+import com.example.entity.account.Account;
 import com.example.service.AccountService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

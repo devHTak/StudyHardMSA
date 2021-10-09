@@ -7,9 +7,13 @@ import lombok.Setter;
 
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-public class ResponseZone {
+public class Notification {
 
-    private Long id;
+    private String studyId;
 
-    private Address address;
+    private ResponseZone zone;
+
+    private ResponseTag tag;
+
+    private String message;
 }

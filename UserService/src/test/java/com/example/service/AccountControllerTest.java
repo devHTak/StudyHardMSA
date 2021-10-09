@@ -1,9 +1,9 @@
 package com.example.service;
 
-import com.example.entity.Account;
-import com.example.entity.PasswordEntity;
-import com.example.entity.SignUpEntity;
-import com.example.entity.UpdateEntity;
+import com.example.entity.account.Account;
+import com.example.entity.account.PasswordEntity;
+import com.example.entity.account.SignUpEntity;
+import com.example.entity.account.UpdateEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

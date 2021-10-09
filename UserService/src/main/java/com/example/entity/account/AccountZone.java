@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.example.entity.account;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
-public class AccountTag {
+public class AccountZone {
 
     @Id @GeneratedValue
     private Long id;
@@ -20,5 +20,7 @@ public class AccountTag {
     @ManyToOne
     private Account account;
 
-    private Long tagId;
+    private Long zoneId;
+
+
 }

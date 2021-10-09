@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.entity.AccountZone;
+import com.example.entity.account.AccountZone;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

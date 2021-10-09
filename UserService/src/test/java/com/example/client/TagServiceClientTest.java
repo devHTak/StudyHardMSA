@@ -1,9 +1,9 @@
 package com.example.client;
 
-import com.example.entity.Account;
-import com.example.entity.RequestLogin;
-import com.example.entity.RequestTag;
-import com.example.entity.ResponseTag;
+import com.example.entity.account.Account;
+import com.example.entity.account.RequestLogin;
+import com.example.entity.zone_tag.RequestTag;
+import com.example.entity.zone_tag.ResponseTag;
 import com.example.service.AccountRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;

@@ -1,6 +1,9 @@
 package com.example.client;
 
-import com.example.entity.*;
+import com.example.entity.account.RequestLogin;
+import com.example.entity.account.SignUpEntity;
+import com.example.entity.zone_tag.Address;
+import com.example.entity.zone_tag.ResponseZone;
 import com.example.service.AccountRepository;
 import com.example.service.AccountService;
 import com.fasterxml.jackson.databind.ObjectMapper;

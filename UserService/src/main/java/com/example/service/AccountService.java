@@ -2,7 +2,9 @@ package com.example.service;
 
 import com.example.client.TagServiceClient;
 import com.example.client.ZoneServiceClient;
-import com.example.entity.*;
+import com.example.entity.account.*;
+import com.example.entity.zone_tag.RequestTag;
+import com.example.entity.zone_tag.RequestZone;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;

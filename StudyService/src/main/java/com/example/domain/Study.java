@@ -1,5 +1,7 @@
 package com.example.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 import net.bytebuddy.dynamic.scaffold.MethodGraph;
 
@@ -12,6 +14,7 @@ import java.util.List;
 @Getter @Setter
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor @AllArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class Study {
 
     @Id @GeneratedValue

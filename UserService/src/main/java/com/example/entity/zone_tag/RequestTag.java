@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.example.entity.zone_tag;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
